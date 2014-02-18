@@ -40,6 +40,8 @@ use TransferPayment\Tools\Regex;
  */
 class TransferPayment extends BaseModule implements PaymentModuleInterface
 {
+
+    const STATUS_PAID = 2;
     /**
      * @param Order $order
      */
