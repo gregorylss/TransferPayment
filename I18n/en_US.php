@@ -7,4 +7,6 @@ return array(
     'companyName'=>'Company name',
     'iban'=>'IBAN',
     'swift'=>'Swift',
+    'Enter your BIC information'=>'Enter your BIC information ',
+    'BIC configuration'=>'BIC configuration',
 );
