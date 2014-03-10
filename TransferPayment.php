@@ -73,10 +73,11 @@ class TransferPayment extends BaseModule implements PaymentModuleInterface
 
         $cond &= $name !== null && $iban !== null && $swift !== null;
 
-        if($cond) {
+        if ($cond) {
             $nameval = $name->getValue();
             $cond &= !empty($nameval) && Regex::iban($iban->getValue()) && Regex::swift($swift->getValue());
         }
+
         return boolval($cond);
     }
 
@@ -88,7 +89,7 @@ class TransferPayment extends BaseModule implements PaymentModuleInterface
 
         /* insert the images from image folder if first module activation */
         $module = $this->getModuleModel();
-        if(ModuleImageQuery::create()->filterByModule($module)->count() == 0) {
+        if (ModuleImageQuery::create()->filterByModule($module)->count() == 0) {
             $this->deployImageFolder($module, sprintf('%s/images', __DIR__), $con);
         }
 

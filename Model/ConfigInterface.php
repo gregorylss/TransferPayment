@@ -5,7 +5,8 @@ namespace TransferPayment\Model;
  * Interface ConfigInterface
  * @package TransferPayment\Model
  */
-interface ConfigInterface {
+interface ConfigInterface
+{
     // Data access
     public function write();
     public static function read();

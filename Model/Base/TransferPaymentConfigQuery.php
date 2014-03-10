@@ -44,9 +44,9 @@ abstract class TransferPaymentConfigQuery extends ModelCriteria
     /**
      * Initializes internal state of \TransferPayment\Model\Base\TransferPaymentConfigQuery object.
      *
-     * @param     string $dbName The database name
-     * @param     string $modelName The phpName of a model, e.g. 'Book'
-     * @param     string $modelAlias The alias for the model in this query, e.g. 'b'
+     * @param string $dbName     The database name
+     * @param string $modelName  The phpName of a model, e.g. 'Book'
+     * @param string $modelAlias The alias for the model in this query, e.g. 'b'
      */
     public function __construct($dbName = 'thelia', $modelName = '\\TransferPayment\\Model\\TransferPaymentConfig', $modelAlias = null)
     {
@@ -56,8 +56,8 @@ abstract class TransferPaymentConfigQuery extends ModelCriteria
     /**
      * Returns a new ChildTransferPaymentConfigQuery object.
      *
-     * @param     string $modelAlias The alias of a model in the query
-     * @param     Criteria $criteria Optional Criteria to build the query from
+     * @param string   $modelAlias The alias of a model in the query
+     * @param Criteria $criteria   Optional Criteria to build the query from
      *
      * @return ChildTransferPaymentConfigQuery
      */
@@ -86,7 +86,7 @@ abstract class TransferPaymentConfigQuery extends ModelCriteria
      * $obj  = $c->findPk(12, $con);
      * </code>
      *
-     * @param mixed $key Primary key to use for the query
+     * @param mixed               $key Primary key to use for the query
      * @param ConnectionInterface $con an optional connection object
      *
      * @return ChildTransferPaymentConfig|array|mixed the result, formatted by the current formatter
@@ -117,10 +117,10 @@ abstract class TransferPaymentConfigQuery extends ModelCriteria
      * Find object by primary key using raw SQL to go fast.
      * Bypass doSelect() and the object formatter by using generated code.
      *
-     * @param     mixed $key Primary key to use for the query
-     * @param     ConnectionInterface $con A connection object
+     * @param mixed               $key Primary key to use for the query
+     * @param ConnectionInterface $con A connection object
      *
-     * @return   ChildTransferPaymentConfig A model object, or null if the key is not found
+     * @return ChildTransferPaymentConfig A model object, or null if the key is not found
      */
     protected function findPkSimple($key, $con)
     {
@@ -147,8 +147,8 @@ abstract class TransferPaymentConfigQuery extends ModelCriteria
     /**
      * Find object by primary key.
      *
-     * @param     mixed $key Primary key to use for the query
-     * @param     ConnectionInterface $con A connection object
+     * @param mixed               $key Primary key to use for the query
+     * @param ConnectionInterface $con A connection object
      *
      * @return ChildTransferPaymentConfig|array|mixed the result, formatted by the current formatter
      */
@@ -168,8 +168,8 @@ abstract class TransferPaymentConfigQuery extends ModelCriteria
      * <code>
      * $objs = $c->findPks(array(12, 56, 832), $con);
      * </code>
-     * @param     array $keys Primary keys to use for the query
-     * @param     ConnectionInterface $con an optional connection object
+     * @param array               $keys Primary keys to use for the query
+     * @param ConnectionInterface $con  an optional connection object
      *
      * @return ObjectCollection|array|mixed the list of results, formatted by the current formatter
      */
@@ -190,26 +190,24 @@ abstract class TransferPaymentConfigQuery extends ModelCriteria
     /**
      * Filter the query by primary key
      *
-     * @param     mixed $key Primary key to use for the query
+     * @param mixed $key Primary key to use for the query
      *
      * @return ChildTransferPaymentConfigQuery The current query, for fluid interface
      */
     public function filterByPrimaryKey($key)
     {
-
         return $this->addUsingAlias(TransferPaymentConfigTableMap::NAME, $key, Criteria::EQUAL);
     }
 
     /**
      * Filter the query by a list of primary keys
      *
-     * @param     array $keys The list of primary key to use for the query
+     * @param array $keys The list of primary key to use for the query
      *
      * @return ChildTransferPaymentConfigQuery The current query, for fluid interface
      */
     public function filterByPrimaryKeys($keys)
     {
-
         return $this->addUsingAlias(TransferPaymentConfigTableMap::NAME, $keys, Criteria::IN);
     }
 
@@ -222,9 +220,9 @@ abstract class TransferPaymentConfigQuery extends ModelCriteria
      * $query->filterByName('%fooValue%'); // WHERE name LIKE '%fooValue%'
      * </code>
      *
-     * @param     string $name The value to use as filter.
-     *              Accepts wildcards (* and % trigger a LIKE)
-     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     * @param string $name       The value to use as filter.
+     *                           Accepts wildcards (* and % trigger a LIKE)
+     * @param string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
      * @return ChildTransferPaymentConfigQuery The current query, for fluid interface
      */
@@ -251,9 +249,9 @@ abstract class TransferPaymentConfigQuery extends ModelCriteria
      * $query->filterByValue('%fooValue%'); // WHERE value LIKE '%fooValue%'
      * </code>
      *
-     * @param     string $value The value to use as filter.
-     *              Accepts wildcards (* and % trigger a LIKE)
-     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     * @param string $value      The value to use as filter.
+     *                           Accepts wildcards (* and % trigger a LIKE)
+     * @param string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
      * @return ChildTransferPaymentConfigQuery The current query, for fluid interface
      */
@@ -274,7 +272,7 @@ abstract class TransferPaymentConfigQuery extends ModelCriteria
     /**
      * Exclude object from result
      *
-     * @param   ChildTransferPaymentConfig $transferPaymentConfig Object to remove from the list of results
+     * @param ChildTransferPaymentConfig $transferPaymentConfig Object to remove from the list of results
      *
      * @return ChildTransferPaymentConfigQuery The current query, for fluid interface
      */
@@ -290,8 +288,8 @@ abstract class TransferPaymentConfigQuery extends ModelCriteria
     /**
      * Deletes all rows from the transfer_payment_config table.
      *
-     * @param ConnectionInterface $con the connection to use
-     * @return int The number of affected rows (if supported by underlying database driver).
+     * @param  ConnectionInterface $con the connection to use
+     * @return int                 The number of affected rows (if supported by underlying database driver).
      */
     public function doDeleteAll(ConnectionInterface $con = null)
     {
@@ -322,13 +320,13 @@ abstract class TransferPaymentConfigQuery extends ModelCriteria
     /**
      * Performs a DELETE on the database, given a ChildTransferPaymentConfig or Criteria object OR a primary key value.
      *
-     * @param mixed               $values Criteria or ChildTransferPaymentConfig object or primary key or array of primary keys
-     *              which is used to create the DELETE statement
-     * @param ConnectionInterface $con the connection to use
-     * @return int The number of affected rows (if supported by underlying database driver).  This includes CASCADE-related rows
-     *                if supported by native driver or if emulated using Propel.
-     * @throws PropelException Any exceptions caught during processing will be
-     *         rethrown wrapped into a PropelException.
+     * @param  mixed               $values Criteria or ChildTransferPaymentConfig object or primary key or array of primary keys
+     *                                     which is used to create the DELETE statement
+     * @param  ConnectionInterface $con    the connection to use
+     * @return int                 The number of affected rows (if supported by underlying database driver).  This includes CASCADE-related rows
+     *                                    if supported by native driver or if emulated using Propel.
+     * @throws PropelException     Any exceptions caught during processing will be
+     *                                    rethrown wrapped into a PropelException.
      */
      public function delete(ConnectionInterface $con = null)
      {
@@ -347,7 +345,6 @@ abstract class TransferPaymentConfigQuery extends ModelCriteria
             // use transaction because $criteria could contain info
             // for more than one table or we could emulating ON DELETE CASCADE, etc.
             $con->beginTransaction();
-
 
         TransferPaymentConfigTableMap::removeInstanceFromPool($criteria);
 

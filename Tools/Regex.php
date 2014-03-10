@@ -22,16 +22,18 @@
 /*************************************************************************************/
 namespace TransferPayment\Tools;
 
-
-class Regex {
+class Regex
+{
     const IBAN = "[a-zA-Z]{2}[\d]{2}[a-zA-Z\d]{4}[\d]{7}([a-zA-Z\d]?){0,16}";
     const SWIFT = "[a-zA-Z]{6}[a-zA-Z\d]{2}([a-zA-Z\d]{3})?";
 
-    public static function iban($value) {
+    public static function iban($value)
+    {
         return preg_match("#^".self::IBAN."$#",$value);
     }
 
-    public static function swift($value) {
+    public static function swift($value)
+    {
         return preg_match("#^".self::SWIFT."$#",$value);
     }
 }

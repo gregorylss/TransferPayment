@@ -8,7 +8,6 @@
 
 namespace TransferPayment\Loop;
 
-
 use Thelia\Core\Template\Element\ArraySearchLoopInterface;
 use Thelia\Core\Template\Element\BaseLoop;
 use Thelia\Core\Template\Element\LoopResult;
@@ -17,7 +16,8 @@ use Thelia\Core\Template\Loop\Argument\Argument;
 use Thelia\Core\Template\Loop\Argument\ArgumentCollection;
 use TransferPayment\Tools\Regex;
 
-class GetRegex extends BaseLoop implements ArraySearchLoopInterface {
+class GetRegex extends BaseLoop implements ArraySearchLoopInterface
+{
     /**
      * this method returns an array
      *
@@ -27,7 +27,7 @@ class GetRegex extends BaseLoop implements ArraySearchLoopInterface {
     {
         $ret = "";
 
-        switch($this->getRef()) {
+        switch ($this->getRef()) {
             case "iban":
                 $ret=Regex::IBAN;
                 break;
@@ -46,11 +46,12 @@ class GetRegex extends BaseLoop implements ArraySearchLoopInterface {
      */
     public function parseResults(LoopResult $loopResult)
     {
-        foreach($loopResult->getResultDataCollection() as $row) {
+        foreach ($loopResult->getResultDataCollection() as $row) {
             $loopResultRow = new LoopResultRow();
             $loopResultRow->set("REGEX", $row);
             $loopResult->addRow($loopResultRow);
         }
+
         return $loopResult;
     }
 
@@ -93,4 +94,4 @@ class GetRegex extends BaseLoop implements ArraySearchLoopInterface {
         );
     }
 
-} 
+}

@@ -13,9 +13,10 @@ class TransferPaymentConfig extends BaseTransferPaymentConfig implements ConfigI
     /**
      * @return array|mixed ObjectCollection
      */
-    protected function getDbValues($keysflag=true) {
+    protected function getDbValues($keysflag=true)
+    {
         $pks = $this->getThisVars();
-        if($keysflag) {
+        if ($keysflag) {
             $pks=array_keys($pks);
         }
         $query = TransferPaymentConfigQuery::create()
@@ -25,12 +26,13 @@ class TransferPaymentConfig extends BaseTransferPaymentConfig implements ConfigI
     }
 
     /**
-     * @param null $file
+     * @param  null  $file
      * @return array
      */
     public static function read()
     {
         $pks = self::getSelfVars();
+
         return $pks;
     }
 
@@ -44,6 +46,7 @@ class TransferPaymentConfig extends BaseTransferPaymentConfig implements ConfigI
         $this_class_vars = get_object_vars($obj);
         $base_class_vars = get_class_vars("\\TransferPayment\\Model\\Base\\TransferPaymentConfig");
         $pks = array_diff_key($this_class_vars, $base_class_vars);
+
         return $pks;
     }
 
@@ -54,13 +57,13 @@ class TransferPaymentConfig extends BaseTransferPaymentConfig implements ConfigI
     {
         $dbvals = $this->getDbValues();
         $isnew=array();
-        foreach($dbvals as $var) {
+        foreach ($dbvals as $var) {
             /** @var TransferPaymentConfig $var */
             $isnew[$var->getName()] = true;
         }
         $this->pushValues();
         $vars=$this->getThisVars();
-        foreach($vars as $key=>$value) {
+        foreach ($vars as $key=>$value) {
             $tmp = new TransferPaymentConfig();
             $tmp->setNew(!isset($isnew[$key]));
             $tmp->setName($key);
@@ -77,21 +80,21 @@ class TransferPaymentConfig extends BaseTransferPaymentConfig implements ConfigI
         $this_class_vars = get_object_vars($this);
         $base_class_vars = get_class_vars("\\TransferPayment\\Model\\Base\\TransferPaymentConfig");
         $pks = array_diff_key($this_class_vars, $base_class_vars);
+
         return $pks;
     }
 
-    public  function pushValues()
+    public function pushValues()
     {
         $query = $this->getDbValues();
         foreach ($query as $var) {
             /** @var TransferPaymentConfig $var */
             $name = $var->getName();
-            if($this->$name === null ) {
+            if ($this->$name === null) {
                 $this->$name = $var->getValue();
             }
         }
     }
-
 
     /**
      * @param string $iban
@@ -99,6 +102,7 @@ class TransferPaymentConfig extends BaseTransferPaymentConfig implements ConfigI
     public function setIban($iban)
     {
         $this->iban = $iban;
+
         return $this;
     }
 
@@ -116,6 +120,7 @@ class TransferPaymentConfig extends BaseTransferPaymentConfig implements ConfigI
     public function setCompanyName($name)
     {
         $this->companyName = $name;
+
         return $this;
     }
 
@@ -133,6 +138,7 @@ class TransferPaymentConfig extends BaseTransferPaymentConfig implements ConfigI
     public function setSwift($swift)
     {
         $this->swift = $swift;
+
         return $this;
     }
 

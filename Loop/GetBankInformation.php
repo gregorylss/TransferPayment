@@ -8,7 +8,6 @@
 
 namespace TransferPayment\Loop;
 
-
 use Thelia\Core\Template\Element\BaseLoop;
 use Thelia\Core\Template\Element\LoopResult;
 use Thelia\Core\Template\Element\LoopResultRow;
@@ -16,12 +15,12 @@ use Thelia\Core\Template\Element\PropelSearchLoopInterface;
 
 use Thelia\Core\Template\Loop\Argument\Argument;
 use Thelia\Core\Template\Loop\Argument\ArgumentCollection;
-use Thelia\Core\Translation\Translator;
 use Thelia\Model\Base\OrderQuery;
 use TransferPayment\Model\Base\TransferPaymentConfigQuery;
 use TransferPayment\TransferPayment;
 
-class GetBankInformation extends BaseLoop implements PropelSearchLoopInterface {
+class GetBankInformation extends BaseLoop implements PropelSearchLoopInterface
+{
     /**
      * @param LoopResult $loopResult
      *
@@ -34,7 +33,7 @@ class GetBankInformation extends BaseLoop implements PropelSearchLoopInterface {
          */
 
         /** @var $row \TransferPayment\Model\TransferPaymentConfig */
-        foreach($loopResult->getResultDataCollection() as $row) {
+        foreach ($loopResult->getResultDataCollection() as $row) {
             $loopResultRow = new LoopResultRow();
             $loopResultRow->set("KEY",$row->getName());
             $loopResultRow->set("VALUE",$row->getValue());
@@ -95,10 +94,11 @@ class GetBankInformation extends BaseLoop implements PropelSearchLoopInterface {
 
         $search = TransferPaymentConfigQuery::create();
 
-        if($order === null || $order->getPaymentModuleId() !== TransferPayment::getModCode() ) {
+        if ($order === null || $order->getPaymentModuleId() !== TransferPayment::getModCode() ) {
             $search->filterByName("");
         }
+
         return $search;
     }
 
-} 
+}

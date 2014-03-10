@@ -34,7 +34,8 @@ use TransferPayment\Model\TransferPaymentConfig;
  * @package LocalPickup\Form
  * @author Thelia <info@thelia.net>
  */
-class ConfigureTransfer extends BaseForm {
+class ConfigureTransfer extends BaseForm
+{
     /**
      *
      * in this function you add all the fields you need for your Form.

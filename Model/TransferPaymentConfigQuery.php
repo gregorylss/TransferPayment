@@ -4,7 +4,6 @@ namespace TransferPayment\Model;
 
 use TransferPayment\Model\Base\TransferPaymentConfigQuery as BaseTransferPaymentConfigQuery;
 
-
 /**
  * Skeleton subclass for performing query and update operations on the 'transfer_payment_config' table.
  *
