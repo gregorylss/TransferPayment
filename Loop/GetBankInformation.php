@@ -1,10 +1,25 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: benjamin
- * Date: 17/02/14
- * Time: 17:24
- */
+/*************************************************************************************/
+/*                                                                                   */
+/*      Thelia	                                                                     */
+/*                                                                                   */
+/*      Copyright (c) OpenStudio                                                     */
+/*      email : info@thelia.net                                                      */
+/*      web : http://www.thelia.net                                                  */
+/*                                                                                   */
+/*      This program is free software; you can redistribute it and/or modify         */
+/*      it under the terms of the GNU General Public License as published by         */
+/*      the Free Software Foundation; either version 3 of the License                */
+/*                                                                                   */
+/*      This program is distributed in the hope that it will be useful,              */
+/*      but WITHOUT ANY WARRANTY; without even the implied warranty of               */
+/*      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                */
+/*      GNU General Public License for more details.                                 */
+/*                                                                                   */
+/*      You should have received a copy of the GNU General Public License            */
+/*	    along with this program. If not, see <http://www.gnu.org/licenses/>.         */
+/*                                                                                   */
+/*************************************************************************************/
 
 namespace TransferPayment\Loop;
 
@@ -19,6 +34,11 @@ use Thelia\Model\Base\OrderQuery;
 use TransferPayment\Model\Base\TransferPaymentConfigQuery;
 use TransferPayment\TransferPayment;
 
+/**
+ * Class GetBankInformation
+ * @package TransferPayment\Loop
+ * @author Thelia <info@thelia.net>
+ */
 class GetBankInformation extends BaseLoop implements PropelSearchLoopInterface
 {
     /**

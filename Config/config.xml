@@ -11,17 +11,7 @@
 
     <forms>
         <form name="transfer.configure.bic" class="TransferPayment\Form\ConfigureTransfer" />
-        <!--
-        <form name="MyFormName" class="MyModule\Form\MySuperForm" />
-        -->
     </forms>
-
-    <commands>
-        <!--
-        <command class="MyModule\Command\MySuperCommand" />
-        -->
-    </commands>
-
 
     <services>
         <service id="send.transferpayment.mail" class="TransferPayment\Listener\SendEMail" scope="request">

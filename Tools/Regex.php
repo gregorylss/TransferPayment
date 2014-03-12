@@ -20,8 +20,14 @@
 /*	    along with this program. If not, see <http://www.gnu.org/licenses/>.         */
 /*                                                                                   */
 /*************************************************************************************/
+
 namespace TransferPayment\Tools;
 
+/**
+ * Class Regex
+ * @package TransferPayment\Tools
+ * @author Thelia <info@thelia.net>
+ */
 class Regex
 {
     const IBAN = "[a-zA-Z]{2}[\d]{2}[a-zA-Z\d]{4}[\d]{7}([a-zA-Z\d]?){0,16}";

@@ -71,7 +71,7 @@ class SendEMail extends BaseAction implements EventSubscriberInterface
     {
         if ($event->getOrder()->getPaymentModuleId() === TransferPayment::getModCode()) {
 
-            if ($event->getOrder()->getStatusId() === TransferPayment::STATUS_PAID ) {
+            if ($event->getOrder()->isPaid()) {
                 $contact_email = ConfigQuery::read('store_email');
 
                 if ($contact_email) {
