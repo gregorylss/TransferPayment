@@ -21,25 +21,37 @@
 /*                                                                                   */
 /*************************************************************************************/
 
-namespace TransferPayment\Tools;
+
+namespace TransferPayment\Constraints;
+use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\ConstraintValidator;
+
 
 /**
- * Class Regex
- * @package TransferPayment\Tools
+ * Class BICValidator
+ * @package TransferPayment\Constraints 
  * @author Thelia <info@thelia.net>
  */
-class Regex
-{
-    const IBAN = "[a-zA-Z]{2}[\d]{2}[a-zA-Z\d]{4}[\d]{7}([a-zA-Z\d]?){0,16}";
-    const SWIFT = "[a-zA-Z]{6}[a-zA-Z\d]{2}([a-zA-Z\d]{3})?";
-
-    public static function iban($value)
+class BICValidator extends ConstraintValidator {
+    /**
+     * Checks if the passed value is valid.
+     *
+     * @param mixed $value The value that should be validated
+     * @param Constraint $constraint The constraint for the validation
+     *
+     * @api
+     */
+    public function validate($value, Constraint $constraint)
     {
-        return preg_match("#^".self::IBAN."$#",$value);
+        if (null === $value || '' === $value) {
+            return;
+        }
+
+        $teststring = preg_replace('/\s+/', '', $value);
+
+        if(!preg_match("([a-zA-Z]{4}[a-zA-Z]{2}[a-zA-Z0-9]{2}([a-zA-Z0-9]{3})?)", $teststring)) {
+            $this->context->addViolation($constraint->message, array('{{ value }}' => $value));
+        }
     }
 
-    public static function swift($value)
-    {
-        return preg_match("#^".self::SWIFT."$#",$value);
-    }
-}
+} 

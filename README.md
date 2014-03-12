@@ -8,13 +8,13 @@ Summary
 fr_FR:
 1.  Installation
 2.  Utilisation
-3.  Boucles
+3.  Boucle
 4.  Intégration
 
 en_US:
 1.  Install notes
 2.  How to use
-3.  Loops
+3.  Loop
 4.  Integration
 
 
@@ -30,17 +30,8 @@ Pour installer le module de paiement par virement, téléchargez l'archive et d�
 Tout d'abord, activez le module dans le Back-Office, onglet "Modules", puis cliquez sur "Configurer" sur la ligne du module.
 Entrez vos informations bancaires et enregistrez.
 
-### Boucles
-1.  transfer.get.regex
-    - Arguments:
-        1. ref | obligatoire | nom de la regex (iban | swift)
-    - Sorties:
-        1. \$REGEX: expression régulière correspondant à la ref
-    - Utilisation:
-        ```{loop type="transfer.get.regex" name="yourloopname" ref="iban"}
-            <input type="text" pattern="{\$REGEX}" />
-        {/loop}```
-2.  transfer.get.info
+### Boucle
+1.  transfer.get.info
     - Arguments:
         1. order_id | obligatoire | id de la commande
     - Sorties:
@@ -71,17 +62,8 @@ To install the transfer payment module, download the archive and uncompress it i
 You first need to activate the module in the Back-Office, tab "Modules". Then click on "Configure" on the line of the module.
 Enter you Bank account information and save.
 
-### Loops
-1.  transfer.get.regex
-    - Arguments:
-        1. ref | mandatory | name of the regex (iban | swift)
-    - Output:
-        1. \$REGEX: regular expression corresponding to the ref.
-    - Usage:
-        ```{loop type="transfer.get.regex" name="yourloopname" ref="iban"}
-            <input type="text" pattern="{\$REGEX}" />
-        {/loop}```
-2.  transfer.get.info
+### Loop
+1.  transfer.get.info
     - Arguments:
         1. order_id | mandatory | id of the order
     - Output:

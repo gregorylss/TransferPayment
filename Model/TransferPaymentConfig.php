@@ -34,7 +34,7 @@ class TransferPaymentConfig extends BaseTransferPaymentConfig implements ConfigI
 {
     protected $companyName;
     protected $iban;
-    protected $swift;
+    protected $bic;
 
     /**
      * @return array|mixed ObjectCollection
@@ -161,9 +161,9 @@ class TransferPaymentConfig extends BaseTransferPaymentConfig implements ConfigI
     /**
      * @param string $swift
      */
-    public function setSwift($swift)
+    public function setBic($bic)
     {
-        $this->swift = $swift;
+        $this->bic = $bic;
 
         return $this;
     }
@@ -171,8 +171,8 @@ class TransferPaymentConfig extends BaseTransferPaymentConfig implements ConfigI
     /**
      * @return string
      */
-    public function getSwift()
+    public function getBic()
     {
-        return $this->swift;
+        return $this->bic;
     }
 }

@@ -2,11 +2,10 @@
 
 return array(
     'IBAN' => 'IBAN',
-    'Swift' => 'Swift',
+    'BIC' => 'BIC',
     'company name' => 'Company name',
     'companyName'=>'Company name',
     'iban'=>'IBAN',
-    'swift'=>'Swift',
-    'Enter your BIC information'=>'Enter your BIC information ',
-    'BIC configuration'=>'BIC configuration',
+    'Enter your BIC information'=>'Enter your bank information information ',
+    'Bank information configuration'=>'Bank information configuration',
 );

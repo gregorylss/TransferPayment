@@ -67,14 +67,11 @@ class TransferPayment extends BaseModule implements PaymentModuleInterface
         $query = TransferPaymentConfigQuery::create();
         $name = $query->findPk("companyName");
         $iban = $query->findPk("iban");
-        $swift = $query->findPk("swift");
+        $bic = $query->findPk("bic");
 
-        $cond &= $name !== null && $iban !== null && $swift !== null;
+        $cond &= $name !== null && $iban !== null && $bic !== null;
 
-        if ($cond) {
-            $nameval = $name->getValue();
-            $cond &= !empty($nameval) && Regex::iban($iban->getValue()) && Regex::swift($swift->getValue());
-        }
+        // TODO: check if iban is valid
 
         return boolval($cond);
     }

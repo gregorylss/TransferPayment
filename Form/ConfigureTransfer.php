@@ -24,9 +24,11 @@
 
 namespace TransferPayment\Form;
 
+use Symfony\Component\Validator\Constraints\Iban;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Thelia\Core\Translation\Translator;
 use Thelia\Form\BaseForm;
+use TransferPayment\Constraints\BIC;
 use TransferPayment\Model\TransferPaymentConfig;
 
 /**
@@ -66,7 +68,9 @@ class ConfigureTransfer extends BaseForm
                 "label_attr"=>array(
                     "for"=>"namefield"
                 ),
-                "constraints"=>array(new NotBlank()),
+                "constraints"=>array(
+                    new NotBlank()
+                ),
                 "data"=>!empty($config['companyName']) && $config['companyName'] !== null ? $config['companyName']:"",
             ))
             ->add("iban","text", array(
@@ -74,16 +78,22 @@ class ConfigureTransfer extends BaseForm
                 "label_attr"=>array(
                     "for"=>"ibanfield"
                 ),
-                "constraints"=>array(new NotBlank()),
+                "constraints"=>array(
+                    new NotBlank(),
+                    new Iban()
+                ),
                 "data"=>!empty($config['iban']) && $config['iban'] !== null ? $config['iban']:"",
             ))
-            ->add("swift","text", array(
-                "label"=>Translator::getInstance()->trans("Swift"),
+            ->add("bic","text", array(
+                "label"=>Translator::getInstance()->trans("BIC"),
                 "label_attr"=>array(
-                    "for"=>"swiftefield"
+                    "for"=>"bicfield"
                 ),
-                "constraints"=>array(new NotBlank()),
-                "data"=>!empty($config['swift']) && $config['swift'] !== null ? $config['swift']:"",
+                "constraints"=>array(
+                    new NotBlank(),
+                    new BIC()
+                ),
+                "data"=>!empty($config['bic']) && $config['bic'] !== null ? $config['bic']:"",
             ))
         ;
     }

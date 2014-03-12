@@ -1,3 +1,9 @@
+{if isset($smarty.get.errmes) && !empty($smarty.get.errmes)}
+     <div class="alert alert-danger">
+         {$smarty.get.errmes}
+     </div>
+{/if}
+
 <div class="general-block-decorator">
     <div class="col-md-12">
         <ul id="tabbed-menu" class="nav nav-tabs">
@@ -30,17 +36,17 @@
                                     {$label}
                                 </label>
 
-                                <input type="text" class="form-control" required name="{$name}" id="{$label_attr.for}" pattern="{loop name="find.regex.iban" type="transfer.get.regex" ref="iban"}{$REGEX}{/loop}" value="{$value}"/>
+                                <input type="text" class="form-control" required name="{$name}" id="{$label_attr.for}" value="{$value}"/>
                             </div>
                             {/form_field}
 
-                            {form_field form=$form field="swift"}
+                            {form_field form=$form field="bic"}
                             <div class="form-group {if $error}has-error{/if}">
                                 <label for="{$label_attr.for}">
                                     {$label}
                                 </label>
 
-                                <input type="text" class="form-control" required name="{$name}" id="{$label_attr.for}" pattern="{loop name="find.regex.swift" type="transfer.get.regex" ref="swift"}{$REGEX}{/loop}" value="{$value}"/>
+                                <input type="text" class="form-control" required name="{$name}" id="{$label_attr.for}" value="{$value}"/>
                             </div>
                             {/form_field}
 

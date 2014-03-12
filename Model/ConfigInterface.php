@@ -60,10 +60,10 @@ interface ConfigInterface
      * @param $swift
      * @return string
      */
-    public function setSwift($swift);
+    public function setBic($bic);
 
     /**
      * @return string
      */
-    public function getSwift();
+    public function getBic();
 }
