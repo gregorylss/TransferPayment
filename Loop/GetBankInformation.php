@@ -118,6 +118,8 @@ class GetBankInformation extends BaseLoop implements PropelSearchLoopInterface
             $search->filterByName("");
         }
 
+        $search->orderBy('placement');
+
         return $search;
     }
 

@@ -10,11 +10,12 @@ CREATE TABLE `transfer_payment_config`
 (
     `name` VARCHAR(255) NOT NULL,
     `value` VARCHAR(255),
+    `placement` INTEGER NOT NULL,
     PRIMARY KEY (`name`)
 ) ENGINE=InnoDB;
 
-INSERT INTO `transfer_payment_config`(`name`) VALUES
-  ("companyName"),("iban"),("bic");
+INSERT INTO `transfer_payment_config`(`name`, `placement`) VALUES
+  ("companyName",1),("iban",2),("bic",3);
 
 -- ---------------------------------------------------------------------
 -- Mail templates for transferpayment

@@ -3,6 +3,7 @@
     <table name="transfer_payment_config">
         <column name="name" required="true" size="255" type="VARCHAR" primaryKey="true"/>
         <column name="value" size="255" type="VARCHAR" />
+        <column name="placement" type="INTEGER" required="true" />
     </table>
     <external-schema filename="local/config/schema.xml" referenceOnly="true" />
 </database>
