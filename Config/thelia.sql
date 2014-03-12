@@ -14,7 +14,7 @@ CREATE TABLE `transfer_payment_config`
 ) ENGINE=InnoDB;
 
 INSERT INTO `transfer_payment_config`(`name`) VALUES
-  ("companyName"),("iban"),("swift");
+  ("companyName"),("iban"),("bic");
 
 -- ---------------------------------------------------------------------
 -- Mail templates for transferpayment
