@@ -3,6 +3,7 @@
 return array(
     'IBAN' => 'IBAN',
     'BIC' => 'BIC',
+    'bic'=>'BIC',
     'company name' => 'Company name',
     'companyName'=>'Company name',
     'iban'=>'IBAN',

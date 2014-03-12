@@ -45,23 +45,18 @@
                         <dd>{$TOTAL_TAXED_AMOUNT} {loop type="currency" name="order-currency" id=$CURRENCY}{$SYMBOL}{/loop}</dd>
                     </dl>
 
-                    {* ifloop statement needs to be called AFTER the loop, so we must store generated response in a variable,
-                       and print it after. *}
-
-                        {assign var="storedLoopResponse" value=""}
-                        {loop name="transfer.infos" type="transfer.get.info" order_id=$ID}
-                            {assign var="storedLoopResponse" value=$storedLoopResponse|cat: $KEY|cat: "|"|cat: $VALUE|cat: "||"}
-                        {/loop}
 
                     {ifloop rel="transfer.infos"}
                     <p>{intl l="You may now do a transfer to this bank account: "}</p>
                     <dl class="dl-horizontal">
-                        {assign var="storedLoopResponseArray" value="||"|explode:{$storedLoopResponse|substr:0:-2}}
-                        {foreach from=$storedLoopResponseArray item="formatedKeyValue"}
-                            {assign var="localKeyValue" value="|"|explode:$formatedKeyValue}
-                            <dt>{intl l=$localKeyValue.0}</dt>
-                            <dd>{$localKeyValue.1}</dd>
-                        {/foreach}
+                        {loop name="transfer.infos" type="transfer.get.info" order_id=$ID}
+                            <dt>
+                                {intl l={$KEY}}
+                            </dt>
+                            <dd>
+                                {$VALUE}
+                            </dd>
+                        {/loop}
                     </dl>
                     {/ifloop}
                 </div>
