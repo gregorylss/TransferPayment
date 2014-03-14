@@ -23,7 +23,7 @@ fr_FR
 
 ### Installation
 
-Pour installer le module de paiement par virement, téléchargez l'archive et décompressez la dans <dossier de thelia>/local/modules
+Pour installer le module de paiement par virement, téléchargez l'archive et décompressez la dans ```<dossier de thelia>/local/modules```
 
 ### Utilisation
 
@@ -47,15 +47,15 @@ Entrez vos informations bancaires et enregistrez.
 
 Les informations bancaires du commerçant sont affichées sur la page order-placed.html,
 un exemple d'intégration est proposé pour le thème par défault de Thelia.
-Il vous suffit de copier le(s) fichier(s) contenu(s) dans <dossier du module>/templates/frontOffice/default
-dans <dossier de Thelia>/templates/frontOffice/default
+Il vous suffit de copier le(s) fichier(s) contenu(s) dans ```<dossier du module>/templates/frontOffice/default```
+dans ```<dossier de Thelia>/templates/frontOffice/default```
 
 en_US
 -----
 
 ### Install notes
 
-To install the transfer payment module, download the archive and uncompress it in <path to thelia>/local/modules
+To install the transfer payment module, download the archive and uncompress it in ```<path to thelia>/local/modules```
 
 ### How to use
 
@@ -79,5 +79,5 @@ Enter you Bank account information and save.
 
 The bank account information are displayed on "order-placed.html".
 An integration example is available for the default Thelia theme.
-You only have to copy the file(s) of <path to module>/templates/frontOffice/default
-in <path to Thelia>/templates/frontOffice/default
+You only have to copy the file(s) of ```<path to module>/templates/frontOffice/default```
+in ```<path to Thelia>/templates/frontOffice/default```
