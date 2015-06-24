@@ -110,4 +110,9 @@ class TransferPayment extends BaseModule implements PaymentModuleInterface
 
         return $search->getId();
     }
+
+    public function manageStockOnCreation()
+    {
+        return false;
+    }
 }
