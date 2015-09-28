@@ -1,0 +1,12 @@
+{
+    "name": "thelia/transfer-payment-module",
+    "description": "Thelia 2 module for payment by bank transfer",
+    "license": "GPL-3.0",
+    "type": "thelia-module",
+    "require": {
+        "thelia/installer": "~1.0"
+    },
+    "extra": {
+        "installer-name": "TransferPayment"
+    }
+}
