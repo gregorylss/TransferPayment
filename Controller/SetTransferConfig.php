@@ -60,9 +60,13 @@ class SetTransferConfig extends BaseAdminController
             $errmes = $e->getMessage();
         }
 
-        $this->redirectToRoute("admin.module.configure",array(),
-            array ( 'module_code'=>"TransferPayment",
+        return $this->generateRedirectFromRoute(
+            'admin.module.configure',
+            [
+                'module_code' => 'TransferPayment',
                 '_controller' => 'Thelia\\Controller\\Admin\\ModuleController::configureAction',
-                'errmes'=>$errmes));
+                'errmes' => $errmes
+            ]
+        );
     }
 }
