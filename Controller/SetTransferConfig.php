@@ -62,6 +62,7 @@ class SetTransferConfig extends BaseAdminController
 
         return $this->generateRedirectFromRoute(
             'admin.module.configure',
+            [],
             [
                 'module_code' => 'TransferPayment',
                 '_controller' => 'Thelia\\Controller\\Admin\\ModuleController::configureAction',
