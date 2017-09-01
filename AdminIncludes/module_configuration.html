@@ -5,60 +5,61 @@
 {/if}
 
 <div class="row general-block-decorator">
-    <div class="col-md-12">
-        <ul id="tabbed-menu" class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#configure_account">{intl l="BIC configuration"}</a></li>
-        </ul>
-        <br/>
-        <div class="tab-content">
-            <div id="configure_account" class="tab-pane active form-container">
-            <form action="{url path="/admin/module/transferpayment/configure"}" method="post">
-                <div class="panel panel-default">
-                    <div class="panel-heading clearfix">
-                        {intl l="Enter your BIC information"}
-                    </div>
-                    <div class="panel-body">
-                        {form name="transfer.configure.bic"}
-                            {form_hidden_fields form=$form}
-                            {form_field form=$form field="name"}
-                            <div class="form-group {if $error}has-error{/if}">
-                                <label for="{$label_attr.for}">
-                                    {$label}
-                                </label>
-
-                                <input type="text" class="form-control" required name="{$name}" id="{$label_attr.for}" value="{$value}"/>
-                            </div>
-                            {/form_field}
-
-                            {form_field form=$form field="iban"}
-                            <div class="form-group {if $error}has-error{/if}">
-                                <label for="{$label_attr.for}">
-                                    {$label}
-                                </label>
-
-                                <input type="text" class="form-control" required name="{$name}" id="{$label_attr.for}" value="{$value}"/>
-                            </div>
-                            {/form_field}
-
-                            {form_field form=$form field="bic"}
-                            <div class="form-group {if $error}has-error{/if}">
-                                <label for="{$label_attr.for}">
-                                    {$label}
-                                </label>
-
-                                <input type="text" class="form-control" required name="{$name}" id="{$label_attr.for}" value="{$value}"/>
-                            </div>
-                            {/form_field}
-
-                        <div class="form-group">
-                            <button type="submit" name="save_mode" value="stay" class="form-submit-button btn btn-sm btn-default btn-success" title="{intl l='Save changes'}">{intl l='Save changes'} <span class="glyphicon glyphicon-ok"></span></button>
+    <div class="row">
+        <div class="col-md-12">
+            <ul id="tabbed-menu" class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#configure_account">{intl l="BIC configuration"}</a></li>
+            </ul>
+            <br/>
+            <div class="tab-content">
+                <div id="configure_account" class="tab-pane active form-container">
+                <form action="{url path="/admin/module/transferpayment/configure"}" method="post">
+                    <div class="panel panel-default">
+                        <div class="panel-heading clearfix">
+                            {intl l="Enter your BIC information"}
                         </div>
-                        {/form}
+                        <div class="panel-body">
+                            {form name="transfer.configure.bic"}
+                                {form_hidden_fields form=$form}
+                                {form_field form=$form field="name"}
+                                <div class="form-group {if $error}has-error{/if}">
+                                    <label for="{$label_attr.for}">
+                                        {$label}
+                                    </label>
+
+                                    <input type="text" class="form-control" required name="{$name}" id="{$label_attr.for}" value="{$value}"/>
+                                </div>
+                                {/form_field}
+
+                                {form_field form=$form field="iban"}
+                                <div class="form-group {if $error}has-error{/if}">
+                                    <label for="{$label_attr.for}">
+                                        {$label}
+                                    </label>
+
+                                    <input type="text" class="form-control" required name="{$name}" id="{$label_attr.for}" value="{$value}"/>
+                                </div>
+                                {/form_field}
+
+                                {form_field form=$form field="bic"}
+                                <div class="form-group {if $error}has-error{/if}">
+                                    <label for="{$label_attr.for}">
+                                        {$label}
+                                    </label>
+
+                                    <input type="text" class="form-control" required name="{$name}" id="{$label_attr.for}" value="{$value}"/>
+                                </div>
+                                {/form_field}
+
+                            <div class="form-group">
+                                <button type="submit" name="save_mode" value="stay" class="form-submit-button btn btn-sm btn-default btn-success" title="{intl l='Save changes'}">{intl l='Save changes'} <span class="glyphicon glyphicon-ok"></span></button>
+                            </div>
+                            {/form}
+                        </div>
                     </div>
+                </form>
                 </div>
-            </form>
             </div>
         </div>
-
     </div>
 </div>
