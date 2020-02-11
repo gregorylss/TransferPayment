@@ -73,6 +73,10 @@ class TransferPayment extends BaseModule implements PaymentModuleInterface
 
         // TODO: check if iban is valid
 
+        if(round($this->getCurrentOrderTotalAmount(), 4) == 0){
+            $cond = false;
+        }
+
         return boolval($cond);
     }
 
