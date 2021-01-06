@@ -30,6 +30,7 @@ use Thelia\Module\BaseModule;
 use Thelia\Module\PaymentModuleInterface;
 use Thelia\Model\ModuleImageQuery;
 use Thelia\Model\ModuleQuery;
+use Thelia\Module\AbstractPaymentModule;
 use TransferPayment\Model\TransferPaymentConfigQuery;
 use TransferPayment\Tools\Regex;
 
@@ -38,7 +39,7 @@ use TransferPayment\Tools\Regex;
  * @package TransferPayment
  * author Thelia <info@thelia.net>
  */
-class TransferPayment extends BaseModule implements PaymentModuleInterface
+class TransferPayment extends AbstractPaymentModule
 {
     /**
      * @param Order $order
