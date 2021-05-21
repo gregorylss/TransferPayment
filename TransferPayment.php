@@ -24,6 +24,7 @@
 namespace TransferPayment;
 
 use Propel\Runtime\Connection\ConnectionInterface;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ServicesConfigurator;
 use Thelia\Install\Database;
 use Thelia\Model\Order;
 use Thelia\Module\BaseModule;
@@ -84,14 +85,9 @@ class TransferPayment extends AbstractPaymentModule
     /**
      * @param ConnectionInterface $con
      */
-    public function postActivation(ConnectionInterface $con = null)
+    public function postActivation(ConnectionInterface $con = null): void
     {
-
-        /* insert the images from image folder if first module activation */
         $module = $this->getModuleModel();
-        if (ModuleImageQuery::create()->filterByModule($module)->count() == 0) {
-            $this->deployImageFolder($module, sprintf('%s/images', __DIR__), $con);
-        }
 
         /* set module title */
         $this->setTitle(
@@ -119,5 +115,13 @@ class TransferPayment extends AbstractPaymentModule
     public function manageStockOnCreation()
     {
         return false;
+    }
+
+    public static function configureServices(ServicesConfigurator $servicesConfigurator): void
+    {
+        $servicesConfigurator->load(self::getModuleCode().'\\', __DIR__)
+            ->exclude([THELIA_MODULE_DIR . ucfirst(self::getModuleCode()). "/I18n/*"])
+            ->autowire(true)
+            ->autoconfigure(true);
     }
 }

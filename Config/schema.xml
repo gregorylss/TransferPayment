@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<database defaultIdMethod="native" name="thelia" namespace="TransferPayment\Model">
+<database defaultIdMethod="native" name="TheliaMain" namespace="TransferPayment\Model">
     <table name="transfer_payment_config">
         <column name="name" required="true" size="255" type="VARCHAR" primaryKey="true"/>
         <column name="value" size="255" type="VARCHAR" />

@@ -28,20 +28,26 @@ use TransferPayment\Form\ConfigureTransfer;
 use TransferPayment\Model\TransferPaymentConfig;
 use Thelia\Core\Security\Resource\AdminResources;
 use Thelia\Core\Security\AccessManager;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class SetTransferConfig
+ * @Route("/admin/module/transferpayment/configure", name="transferpayment")
  * @package TransferPayment\Controller
  * @author Thelia <info@thelia.net>
  */
 class SetTransferConfig extends BaseAdminController
 {
+    /**
+     *
+     * @Route("", name="_configure")
+     */
     public function configure()
     {
         if (null !== $response = $this->checkAuth(array(AdminResources::MODULE), array('TransferPayment'), AccessManager::UPDATE)) {
             return $response;
         }
-        $form = new ConfigureTransfer($this->getRequest());
+        $form = $this->createForm(ConfigureTransfer::getName());
         $config = new TransferPaymentConfig();
         $errmes = "";
         try {

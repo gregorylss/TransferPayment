@@ -24,6 +24,7 @@
 
 namespace TransferPayment\Form;
 
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints\Iban;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Thelia\Core\Translation\Translator;
@@ -63,7 +64,8 @@ class ConfigureTransfer extends BaseForm
         $config = TransferPaymentConfig::read();
 
         $this->formBuilder
-            ->add("name","text", array(
+            ->add(
+                "name",TextType::class, array(
                 "label"=>Translator::getInstance()->trans("company name"),
                 "label_attr"=>array(
                     "for"=>"namefield"
@@ -73,7 +75,7 @@ class ConfigureTransfer extends BaseForm
                 ),
                 "data"=>!empty($config['companyName']) && $config['companyName'] !== null ? $config['companyName']:"",
             ))
-            ->add("iban","text", array(
+            ->add("iban",TextType::class, array(
                 "label"=>Translator::getInstance()->trans("IBAN"),
                 "label_attr"=>array(
                     "for"=>"ibanfield"
@@ -84,7 +86,7 @@ class ConfigureTransfer extends BaseForm
                 ),
                 "data"=>!empty($config['iban']) && $config['iban'] !== null ? $config['iban']:"",
             ))
-            ->add("bic","text", array(
+            ->add("bic",TextType::class, array(
                 "label"=>Translator::getInstance()->trans("BIC"),
                 "label_attr"=>array(
                     "for"=>"bicfield"
@@ -101,9 +103,9 @@ class ConfigureTransfer extends BaseForm
     /**
      * @return string the name of you form. This name must be unique
      */
-    public function getName()
+    public static function getName()
     {
-        return "configuretransferpayment";
+        return "configure_transfer_payment";
     }
 
 }

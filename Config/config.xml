@@ -9,15 +9,7 @@
     </loops>
 
     <forms>
-        <form name="transfer.configure.bic" class="TransferPayment\Form\ConfigureTransfer" />
+        <form name="configure_transfer_payment" class="TransferPayment\Form\ConfigureTransfer" />
     </forms>
-
-    <services>
-        <service id="send.transferpayment.mail" class="TransferPayment\Listener\SendEMail" scope="request">
-            <argument type="service" id="thelia.parser" />
-            <argument type="service" id="mailer"/>
-            <tag name="kernel.event_subscriber"/>
-        </service>
-    </services>
 
 </config>
