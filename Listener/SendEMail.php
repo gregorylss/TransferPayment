@@ -40,11 +40,34 @@ use Thelia\Model\MessageQuery;
 class SendEMail extends BaseAction implements EventSubscriberInterface
 {
 
+    /**
+     * @var MailerFactory
+     */
+    protected $mailer;
+    /**
+     * @var ParserInterface
+     */
+    protected $parser;
+
+    public function __construct(ParserInterface $parser,MailerFactory $mailer)
+    {
+        $this->parser = $parser;
+        $this->mailer = $mailer;
+    }
+
+    /**
+     * @return \Thelia\Mailer\MailerFactory
+     */
+    public function getMailer()
+    {
+        return $this->mailer;
+    }
+
     /*
      * @params OrderEvent $order
      * Checks if order delivery module is icirelais and if order new status is sent, send an email to the customer.
      */
-    public function update_status(OrderEvent $event, MailerFactory $mailerFactory, ParserInterface $parser)
+    public function update_status(OrderEvent $event)
     {
         if ($event->getOrder()->getPaymentModuleId() === TransferPayment::getModCode()) {
 
@@ -63,8 +86,8 @@ class SendEMail extends BaseAction implements EventSubscriberInterface
                     $order = $event->getOrder();
                     $customer = $order->getCustomer();
 
-                    $parser->assign('order_id', $order->getId());
-                    $parser->assign('order_ref', $order->getRef());
+                    $this->parser->assign('order_id', $order->getId());
+                    $this->parser->assign('order_ref', $order->getRef());
 
                     $message
                         ->setLocale($order->getLang()->getLocale());
@@ -75,9 +98,9 @@ class SendEMail extends BaseAction implements EventSubscriberInterface
                     ;
 
                     // Build subject and body
-                    $message->buildMessage($parser, $instance);
+                    $message->buildMessage($this->parser, $instance);
 
-                    $mailerFactory->send($instance);
+                    $this->getMailer()->send($instance);
 
                 }
             }
