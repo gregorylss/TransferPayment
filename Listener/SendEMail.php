@@ -55,14 +55,6 @@ class SendEMail extends BaseAction implements EventSubscriberInterface
         $this->mailer = $mailer;
     }
 
-    /**
-     * @return \Thelia\Mailer\MailerFactory
-     */
-    public function getMailer()
-    {
-        return $this->mailer;
-    }
-
     /*
      * @params OrderEvent $order
      * Checks if order delivery module is icirelais and if order new status is sent, send an email to the customer.
@@ -100,7 +92,7 @@ class SendEMail extends BaseAction implements EventSubscriberInterface
                     // Build subject and body
                     $message->buildMessage($this->parser, $instance);
 
-                    $this->getMailer()->send($instance);
+                    $this->mailer->send($instance);
 
                 }
             }
