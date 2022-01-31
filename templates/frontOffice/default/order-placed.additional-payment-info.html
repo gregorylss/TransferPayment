@@ -1,0 +1,14 @@
+{loop type="order" name="placed-order-virement" id=$placed_order_id}
+
+    {ifloop rel="transfer.infos"}
+        <p>{intl l="You may now do a transfer to this bank account: "}</p></br>
+        <dl class="dl-horizontal">
+            {loop name="transfer.infos" type="transfer.get.info" order_id=$ID}
+                <dt>
+                    {intl l={$KEY}} : {$VALUE}
+                </dt>
+            {/loop}
+        </dl>
+    {/ifloop}
+
+{/loop}
