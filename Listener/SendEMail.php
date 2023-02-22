@@ -84,20 +84,10 @@ class SendEMail extends BaseAction implements EventSubscriberInterface
                     $message
                         ->setLocale($order->getLang()->getLocale());
 
-                    $instance = \Swift_Message::newInstance()
-                        ->addTo($customer->getEmail(), $customer->getFirstname()." ".$customer->getLastname())
-                        ->addFrom($contact_email, ConfigQuery::read('store_name'))
-                    ;
-
-                    // Build subject and body
-                    $message->buildMessage($this->parser, $instance);
-
-                    $this->mailer->send($instance);
-
+                    $this->mailer->sendEmailToCustomer($message->getName(), $customer);
                 }
             }
         }
-
     }
 
     /**
