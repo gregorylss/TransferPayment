@@ -23,6 +23,8 @@
 
 namespace TransferPayment\Listener;
 
+use Thelia\Model\ModuleConfigQuery;
+use TransferPayment\Model\TransferPaymentConfig;
 use TransferPayment\TransferPayment;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Thelia\Action\BaseAction;
@@ -32,6 +34,7 @@ use Thelia\Mailer\MailerFactory;
 use Thelia\Core\Template\ParserInterface;
 use Thelia\Model\ConfigQuery;
 use Thelia\Model\MessageQuery;
+
 /**
  * Class SendEMail
  * @package IciRelais\Listener
@@ -49,7 +52,7 @@ class SendEMail extends BaseAction implements EventSubscriberInterface
      */
     protected $parser;
 
-    public function __construct(ParserInterface $parser,MailerFactory $mailer)
+    public function __construct(ParserInterface $parser, MailerFactory $mailer)
     {
         $this->parser = $parser;
         $this->mailer = $mailer;
@@ -61,6 +64,10 @@ class SendEMail extends BaseAction implements EventSubscriberInterface
      */
     public function update_status(OrderEvent $event)
     {
+        if (ModuleConfigQuery::create()->getConfigValue(TransferPayment::getModuleId(),"sendEmail")) {
+            return;
+        }
+
         if ($event->getOrder()->getPaymentModuleId() === TransferPayment::getModCode()) {
 
             if ($event->getOrder()->isPaid()) {

@@ -24,13 +24,16 @@
 
 namespace TransferPayment\Form;
 
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints\Iban;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Thelia\Core\Translation\Translator;
 use Thelia\Form\BaseForm;
+use Thelia\Model\ModuleConfigQuery;
 use TransferPayment\Constraints\BIC;
 use TransferPayment\Model\TransferPaymentConfig;
+use TransferPayment\TransferPayment;
 
 /**
  * Class ConfigureTransfer
@@ -65,39 +68,50 @@ class ConfigureTransfer extends BaseForm
 
         $this->formBuilder
             ->add(
-                "name",TextType::class, array(
-                "label"=>Translator::getInstance()->trans("company name"),
-                "label_attr"=>array(
-                    "for"=>"namefield"
+                "name", TextType::class, array(
+                "label" => Translator::getInstance()->trans("company name"),
+                "label_attr" => array(
+                    "for" => "namefield"
                 ),
-                "constraints"=>array(
+                "constraints" => array(
                     new NotBlank()
                 ),
-                "data"=>!empty($config['companyName']) && $config['companyName'] !== null ? $config['companyName']:"",
+                "data" => !empty($config['companyName']) && $config['companyName'] !== null ? $config['companyName'] : "",
             ))
-            ->add("iban",TextType::class, array(
-                "label"=>Translator::getInstance()->trans("IBAN"),
-                "label_attr"=>array(
-                    "for"=>"ibanfield"
+            ->add("iban", TextType::class, array(
+                "label" => Translator::getInstance()->trans("IBAN"),
+                "label_attr" => array(
+                    "for" => "ibanfield"
                 ),
-                "constraints"=>array(
+                "constraints" => array(
                     new NotBlank(),
                     new Iban()
                 ),
-                "data"=>!empty($config['iban']) && $config['iban'] !== null ? $config['iban']:"",
+                "data" => !empty($config['iban']) && $config['iban'] !== null ? $config['iban'] : "",
             ))
-            ->add("bic",TextType::class, array(
-                "label"=>Translator::getInstance()->trans("BIC"),
-                "label_attr"=>array(
-                    "for"=>"bicfield"
+            ->add("bic", TextType::class, array(
+                "label" => Translator::getInstance()->trans("BIC"),
+                "label_attr" => array(
+                    "for" => "bicfield"
                 ),
-                "constraints"=>array(
+                "constraints" => array(
                     new NotBlank(),
                     new BIC()
                 ),
-                "data"=>!empty($config['bic']) && $config['bic'] !== null ? $config['bic']:"",
+                "data" => !empty($config['bic']) && $config['bic'] !== null ? $config['bic'] : "",
             ))
-        ;
+            ->add(
+                "sendEmail",
+                CheckboxType::class,
+                [
+                    "label" => Translator::getInstance()->trans("Send confirmation email"),
+                    "label_attr" => [
+                        "for" => "sendEmail"
+                    ],
+                    "required" => false,
+                    "data" => (bool) ModuleConfigQuery::create()->getConfigValue(TransferPayment::getModuleId(),"sendEmail"),
+                ]
+            );
     }
 
     /**
@@ -107,5 +121,4 @@ class ConfigureTransfer extends BaseForm
     {
         return "configure_transfer_payment";
     }
-
 }

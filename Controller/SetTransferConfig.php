@@ -24,11 +24,14 @@
 namespace TransferPayment\Controller;
 
 use Thelia\Controller\Admin\BaseAdminController;
+use Thelia\Model\ModuleConfig;
+use Thelia\Model\ModuleConfigQuery;
 use TransferPayment\Form\ConfigureTransfer;
 use TransferPayment\Model\TransferPaymentConfig;
 use Thelia\Core\Security\Resource\AdminResources;
 use Thelia\Core\Security\AccessManager;
 use Symfony\Component\Routing\Annotation\Route;
+use TransferPayment\TransferPayment;
 
 /**
  * Class SetTransferConfig
@@ -56,11 +59,15 @@ class SetTransferConfig extends BaseAdminController
             $name = $vform->get('name')->getData();
             $iban = $vform->get('iban')->getData();
             $bic = $vform->get('bic')->getData();
+            $sendEmail = $vform->get('sendEmail')->getData();
 
                 $config->setCompanyName($name)
                     ->setIban($iban)
                     ->setBic($bic)
                     ->write();
+
+            ModuleConfigQuery::create()
+                ->setConfigValue(TransferPayment::getModuleId(), 'sendEmail', $sendEmail);
 
         } catch (\Exception $e) {
             $errmes = $e->getMessage();
